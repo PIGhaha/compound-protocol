@@ -35,6 +35,8 @@ contract CErc20Delegator is CTokenInterface, CErc20Interface, CDelegatorInterfac
         admin = msg.sender;
 
         // First delegate gets to initialize the delegator (i.e. storage contract)
+        //abi.encodeWithSignature(string signature, ...) returns (bytes)：等价于:
+        //abi.encodeWithSelector(bytes4(keccak256(signature), ...)
         delegateTo(implementation_, abi.encodeWithSignature("initialize(address,address,address,uint256,string,string,uint8)",
                                                             underlying_,
                                                             comptroller_,

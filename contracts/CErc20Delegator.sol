@@ -366,6 +366,7 @@ contract CErc20Delegator is CTokenInterface, CErc20Interface, CDelegatorInterfac
       * @dev Admin function to accrue interest and set a new reserve factor
       * @return uint 0=success, otherwise a failure (see ErrorReporter.sol for details)
       */
+    //reserve factor定义了借款人利息转化为准备金的比例
     function _setReserveFactor(uint newReserveFactorMantissa) external returns (uint) {
         bytes memory data = delegateToImplementation(abi.encodeWithSignature("_setReserveFactor(uint256)", newReserveFactorMantissa));
         return abi.decode(data, (uint));
